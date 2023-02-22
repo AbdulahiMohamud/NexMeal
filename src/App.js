@@ -7,7 +7,7 @@ function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/data")
+    fetch(`${API_SERVER}/api/data`)
       .then(response => response.json())
       .then(data => setData(data.testRecord))
       .catch(error => console.error(error));
