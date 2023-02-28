@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
-
-const API_SERVER = process.env.SERVER;
+// import '.src/Css/App.css';
 
 function App() {
   const [data, setData] = useState([]);
@@ -9,7 +7,7 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:8080/api/data")
       .then(response => response.json())
-      .then(data => setData(data.testRecord))
+      .then(data => setData(data))
       .catch(error => console.error(error));
   }, []);
 
@@ -18,7 +16,7 @@ function App() {
       <h1>Hello</h1>
       <ul>
         {data.map(item => (
-          <li key={item.name}>{item.name} ({item.num})</li>
+          <li key={item.id}>{item.name} ({item.email})</li>
         ))}
       </ul>
     </div>
