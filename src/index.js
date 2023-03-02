@@ -4,13 +4,15 @@ import './index.css';
 import App from './components/App';
 import Login from './components/Login';
 import SignupForm from './components/SignupForm';
+import { BrowserRouter } from 'react-router-dom';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-    <Login />
- 
+  <BrowserRouter>
+      <App />
+    </BrowserRouter>
 );
 
 
