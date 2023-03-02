@@ -32,6 +32,8 @@
 
 import * as React from "react";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
+import Login from "./Login";
+import SignupForm from "./SignupForm";
 
 export default function App() {
   return (
@@ -66,8 +68,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignupForm />} />
 
           {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
@@ -90,10 +92,10 @@ function Layout() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/login">Login</Link>
           </li>
           <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/signup">Signup</Link>
           </li>
           <li>
             <Link to="/nothing-here">Nothing Here</Link>
