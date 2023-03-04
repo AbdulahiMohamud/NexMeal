@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/Login.css';
 
-function Login() {
+export default function Login() {
   const [userName, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -45,4 +45,3 @@ function Login() {
   );
 }
 
-export default Login;

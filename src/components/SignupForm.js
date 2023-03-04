@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/SignupForm.css';
 
 
-function SignupForm() {
+export default function SignupForm() {
   const [userName, setUserName] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -70,4 +70,3 @@ function SignupForm() {
   );
 }
 
-export default SignupForm;
