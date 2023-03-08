@@ -33,34 +33,13 @@
 import * as React from "react";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 import Login from "./Login";
+import RecipeSearch from "./RecipeSearch";
 import SignupForm from "./SignupForm";
 
 export default function App() {
   return (
     <div>
-      <h1>Server Rendering Example</h1>
-
-      <p>
-        If you check out the HTML source of this page, you'll notice that it
-        already contains the HTML markup of the app that was sent from the
-        server!
-      </p>
-
-      <p>
-        This is great for search engines that need to index this page. It's also
-        great for users because server-rendered pages tend to load more quickly
-        on mobile devices and over slow networks.
-      </p>
-
-      <p>
-        Another thing to notice is that when you click one of the links below
-        and navigate to a different URL, then hit the refresh button on your
-        browser, the server is able to generate the HTML markup for that page as
-        well because you're using React Router on the server. This creates a
-        seamless experience both for your users navigating around your site and
-        for developers on your team who get to use the same routing library in
-        both places.
-      </p>
+     
 
       {/* Routes nest inside one another. Nested route paths build upon
             parent route paths, and nested route elements render inside
@@ -70,6 +49,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignupForm />} />
+          <Route path="recipe" element={<RecipeSearch />} />
 
           {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
@@ -98,7 +78,7 @@ function Layout() {
             <Link to="/signup">Signup</Link>
           </li>
           <li>
-            <Link to="/nothing-here">Nothing Here</Link>
+            <Link to="/recipe">Find Recipee</Link>
           </li>
         </ul>
       </nav>
