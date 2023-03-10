@@ -31,6 +31,7 @@ export default function RecipeSearch() {
         if(query){
             fetchRecipes();
         }
+        
     }
 
     return(
@@ -43,7 +44,9 @@ export default function RecipeSearch() {
             
             <ul>
                 {recipes.map((recipe) => (
+                    
                     <li key={recipe.id}>
+                        console.log({recipe})
                         <h2>{recipe.title}</h2>
                         <img src={recipe.image} alt={recipe.titl} />
                         <p>Ready in {recipe.readyInMinutes} minutes</p>
