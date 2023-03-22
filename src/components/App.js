@@ -1,40 +1,10 @@
-// import React, { useState, useEffect } from 'react';
-// import Home from './Home';
-// import Login from './Login';
-// import SignupForm from './SignupForm';
-// import { Routes, Route, Outlet, Link } from "react-router-dom";
-// // import '.src/Css/App.css';
-
-// function App() {
-//   const [data, setData] = useState([]);
-
-//   useEffect(() => {
-//     fetch("http://localhost:8080/api/data")
-//       .then(response => response.json())
-//       .then(data => setData(data))
-//       .catch(error => console.error(error));
-//   }, []);
-
-//   return (
-    
-//     <Routes>
-//       <Route>
-
-//       </Route>
-//     </Routes>
-//   );
-// }
-
-// export default App;
-
-
-
-
 import * as React from "react";
+import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/App.css';
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 import Login from "./Login";
 import RecipeSearch from "./RecipeSearch";
 import SignupForm from "./SignupForm";
+import Home from "./Home";
 
 export default function App() {
   return (
@@ -78,7 +48,7 @@ function Layout() {
             <Link to="/signup">Signup</Link>
           </li>
           <li>
-            <Link to="/recipe">Find Recipee</Link>
+            <Link to="/recipe">FindRecipee</Link>
           </li>
         </ul>
       </nav>
@@ -93,29 +63,6 @@ function Layout() {
   );
 }
 
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  );
-}
-
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
-  );
-}
-
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
-  );
-}
 
 function NoMatch() {
   return (
