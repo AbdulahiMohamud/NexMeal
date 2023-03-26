@@ -5,6 +5,7 @@ import Login from "./Login";
 import RecipeSearch from "./RecipeSearch";
 import SignupForm from "./SignupForm";
 import Home from "./Home";
+import LogOut from "./LogOut";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignupForm />} />
+          <Route path="logout" element={<LogOut />} />
           <Route path="recipe" element={<RecipeSearch />} />
 
           {/* Using path="*"" means "match anything", so this route
@@ -43,6 +45,9 @@ function Layout() {
           </li>
           <li>
             <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/logout">Logout</Link>
           </li>
           <li>
             <Link to="/signup">Signup</Link>

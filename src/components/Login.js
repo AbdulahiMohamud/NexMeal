@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
+import { useNavigate  } from 'react-router-dom';
 import axios from 'axios';
 import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/Login.css';
 
 export default function Login() {
+
+    let navigate = useNavigate();
   const [userName, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -16,7 +19,7 @@ export default function Login() {
     })
     .then(response => {
       console.log(response.data);
-      // redirect to home page or do something else with the response
+      navigate("/")
     })
     .catch(error => {
       console.log(error.response);
