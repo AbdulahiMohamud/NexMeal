@@ -7,6 +7,7 @@ export default function Login() {
 
     let navigate = useNavigate();
   const [userName, setUsername] = useState('');
+  // const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -15,6 +16,7 @@ export default function Login() {
     console.log({userName,password})
     axios.post('http://localhost:8080/login', {
       userName: userName,
+      email:userName,
       password: password
     })
     .then(response => {
