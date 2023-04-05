@@ -4,7 +4,7 @@ import { useNavigate  } from 'react-router-dom';
 import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/SignupForm.css';
 
 
-export default function SignupForm() {
+export default function SignupForm({setLoggedInUser}) {
     let  navigate = useNavigate();
     const [error, setError] = useState('');
     const [userName, setUserName] = useState('');
@@ -32,6 +32,7 @@ export default function SignupForm() {
                   throw new Error(response.statusText);
                 }
               } else {
+                setLoggedInUser({userName, email});
                 navigate('/login');
               }
               return response.json();

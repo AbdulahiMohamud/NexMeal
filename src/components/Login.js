@@ -3,11 +3,10 @@ import { useNavigate  } from 'react-router-dom';
 import axios from 'axios';
 import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/Login.css';
 
-export default function Login() {
+export default function Login({ setLoggedInUser }) {
 
     let navigate = useNavigate();
   const [userName, setUsername] = useState('');
-  // const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -20,7 +19,9 @@ export default function Login() {
       password: password
     })
     .then(response => {
-      console.log(response.data);
+      console.log(response);
+      const user = response.data;
+      setLoggedInUser(user);
       navigate("/")
     })
     .catch(error => {
