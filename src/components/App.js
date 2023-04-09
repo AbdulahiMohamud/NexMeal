@@ -1,21 +1,25 @@
 import * as React from "react";
 import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/App.css';
-import { Routes, Route, Outlet, Link, useLocation } from "react-router-dom";
+import { Routes, Route, Outlet, Link } from "react-router-dom";
 import Login from "./Login";
 import RecipeSearch from "./RecipeSearch";
 import SignupForm from "./SignupForm";
 import Home from "./Home";
 import LogOut from "./LogOut";
+import axios from "axios";
 
 export default function App() {
 
   const [loggedInUser, setLoggedInUser] = React.useState(null);
-  const location = useLocation();
+  const [Token, setToken] = React.useState(null);
+
 
   const handleLogout = () => {
-    // Perform the logout logic here
-    // ...
+    axios.post('http://localhost:8080/logout',{});
     setLoggedInUser(null);
+      
+            
+      
   };
   return (
     <div>
@@ -50,14 +54,15 @@ export default function App() {
         <Route path="/" element={<Layout />} />
         {!loggedInUser && (
           <>
-            <Route path="login" element={<Login setLoggedInUser={setLoggedInUser} />} />
-            <Route path="signup" element={<SignupForm setLoggedInUser={setLoggedInUser} />} />
+            <Route path="login" element={<Login setLoggedInUser={setLoggedInUser} setToken={setToken} Token={Token}/>} />
+            <Route path="signup" element={<SignupForm setLoggedInUser={setLoggedInUser} setToken={setToken} />} />
           </>
         )}
         {loggedInUser && (
           <>
-            <Route path="recipe" element={<RecipeSearch />} />
+            <Route path="recipe" element={<RecipeSearch Token={Token}/>} />
             <Route path="logout" element={<LogOut handleLogout={handleLogout} />} />
+            <Route path="/" element={<Home />} />
           </>
         )}
         <Route path="*" element={<NoMatch />} />

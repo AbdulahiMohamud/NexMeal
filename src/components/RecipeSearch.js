@@ -6,15 +6,25 @@ import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/RecipeSearch.css'
 
 Modal.setAppElement('#root');
 
-export default function RecipeSearch() {
+export default function RecipeSearch({Token}) {
   const [query, setQuery] = useState('');
   const [excludeIngredients, setExcludeIngredients] = useState('');
   const [recipes, setRecipes] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
+  // adding the jwt token
+  
+// api call 
   async function fetchRecipes() {
-    const response = await axios.get(`http://localhost:8080/recipes/search?query=${query}&excludeIngredients=${excludeIngredients}`);
+    // add token for authentication
+    // url is to the backend
+    const url = `http://localhost:8080/recipes/search?query=${query}&excludeIngredients=${excludeIngredients}`;
+    const response = await axios.get(url, {
+     headers: {
+      Authorization: `Bearer ${Token}`,
+    },});
+    
     setRecipes(response.data);
   }
 
