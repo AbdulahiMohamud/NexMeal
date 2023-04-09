@@ -3,25 +3,26 @@ import { useNavigate  } from 'react-router-dom';
 import axios from 'axios';
 import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/Login.css';
 
-export default function Login({ setLoggedInUser }) {
+export default function Login({ setLoggedInUser, setToken, Token }) {
 
-    let navigate = useNavigate();
-  const [userName, setUsername] = useState('');
+  let navigate = useNavigate();
+  const [email,setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  
 
   const handleLogin = (event) => {
     event.preventDefault();
-    console.log({userName,password})
-    axios.post('http://localhost:8080/login', {
-      userName: userName,
-      email:userName,
+
+    axios.post('http://localhost:8080/api/authenticate', {
+  
+      email:email,
       password: password
     })
     .then(response => {
-      console.log(response);
       const user = response.data;
-      setLoggedInUser(user);
+      setToken(user[0].token)
+      setLoggedInUser(user[1]);
       navigate("/")
     })
     .catch(error => {
@@ -35,8 +36,8 @@ export default function Login({ setLoggedInUser }) {
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <div>
-          <label>Username or email:</label>
-          <input type="text" value={userName} onChange={(event) => setUsername(event.target.value)} />
+          <label>Email:</label>
+          <input type="text" value={email} onChange={(event) => setEmail(event.target.value)} />
         </div>
         <div>
           <label>Password:</label>
