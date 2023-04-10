@@ -25,7 +25,7 @@ export default function SignupForm({setLoggedInUser}) {
         })
 
         .then(response => {
-            console.log({response});
+            
             if (!response.ok) {
                 if (response.status === 409) {
                 } else {
