@@ -12,6 +12,7 @@ export default function App() {
 
   const [loggedInUser, setLoggedInUser] = React.useState(null);
   const [Token, setToken] = React.useState(null);
+  console.log(loggedInUser);
 
 
   const handleLogout = () => {
@@ -51,7 +52,7 @@ export default function App() {
         </ul>
       </nav>
       <Routes>
-        <Route path="/" element={<Layout />} />
+        <Route path="/" element={<Home />} />
         {!loggedInUser && (
           <>
             <Route path="login" element={<Login setLoggedInUser={setLoggedInUser} setToken={setToken} Token={Token}/>} />
@@ -62,7 +63,7 @@ export default function App() {
           <>
             <Route path="recipe" element={<RecipeSearch Token={Token}/>} />
             <Route path="logout" element={<LogOut handleLogout={handleLogout} />} />
-            <Route path="/" element={<Home />} />
+            <Route path="home" element={<Home loggedInUser={loggedInUser} />} />
           </>
         )}
         <Route path="*" element={<NoMatch />} />
