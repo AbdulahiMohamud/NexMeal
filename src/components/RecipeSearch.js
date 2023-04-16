@@ -6,12 +6,13 @@ import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/RecipeSearch.css'
 
 Modal.setAppElement('#root');
 
-export default function RecipeSearch({Token}) {
+export default function RecipeSearch({Token , loggedInUser}) {
   const [query, setQuery] = useState('');
   const [excludeIngredients, setExcludeIngredients] = useState('');
   const [recipes, setRecipes] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [isSaved, setIsSaved] = useState(false);
 
   // adding the jwt token
   
@@ -27,15 +28,36 @@ export default function RecipeSearch({Token}) {
     
     setRecipes(response.data);
   }
+  // api call to save recipe in the database for the user
+  async function saveRecipes(recipe) {
+    // add token for authentication
+    // url is to the backend
+    const url = `http://localhost:8080/users/${loggedInUser.id}/recipes`;
+    await axios.post(
+      url,
+      recipe,
+       {
+     headers: {
+      Authorization: `Bearer ${Token}`,
+    },});
+    setIsSaved(true);
+    
+    
+  }
 
   async function handleRecipeClick(recipe) {
     setSelectedRecipe(recipe);
     setModalIsOpen(true);
   }
+  function handleSaveRecipeClick(recipe) {
+    saveRecipes(recipe);
+    
+  }
 
   function handleCloseDetail() {
     setSelectedRecipe(null);
     setModalIsOpen(false);
+    setIsSaved(false);
   }
 
   function handleQueryChange(event) {
@@ -54,6 +76,8 @@ export default function RecipeSearch({Token}) {
   }
 
   return (
+   
+    <>
     <div className="RecipeSearch">
       <h1 className="heading">Recipe Search</h1>
       <form className="form" onSubmit={handleSubmit}>
@@ -70,6 +94,7 @@ export default function RecipeSearch({Token}) {
 
       <ul className="recipes">
         {recipes.map((recipe) => (
+
           <li key={recipe.id} className="recipe">
             <h2 className="recipe__title">{recipe.title}</h2>
             <img src={recipe.image} alt={recipe.title} className="recipe__image" />
@@ -84,6 +109,11 @@ export default function RecipeSearch({Token}) {
         {selectedRecipe && (
           <div>
             <h2 className="modal__title">{selectedRecipe.title}</h2>
+            {!isSaved ? 
+            (<p onClick={() => handleSaveRecipeClick(selectedRecipe)}>❤️</p>)
+            :
+          (<p>Added to Saves</p>)}
+            
             <img src={selectedRecipe.image} alt={selectedRecipe.title} className="modal__image" />
             <p className="modal__time">Ready in {selectedRecipe.readyInMinutes} minutes</p>
 
@@ -97,6 +127,6 @@ export default function RecipeSearch({Token}) {
           </div>
         )}
       </Modal>
-    </div>
+    </div></>
   );
 }

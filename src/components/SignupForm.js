@@ -12,10 +12,11 @@ export default function SignupForm({setLoggedInUser}) {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    console.log()
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log({ userName, firstName, lastName, email, password });
+        
 
         // Send POST request to Spring Boot API
         fetch('http://localhost:8080/api/signup', {
@@ -39,7 +40,7 @@ export default function SignupForm({setLoggedInUser}) {
         })
 
         .then(data => {
-            console.log(data);
+            
         })
 
         .catch(error => {
