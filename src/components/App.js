@@ -1,25 +1,21 @@
 import * as React from "react";
 import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/App.css';
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import Login from "./Login";
 import RecipeSearch from "./RecipeSearch";
 import SignupForm from "./SignupForm";
 import Home from "./Home";
 import LogOut from "./LogOut";
-import axios from "axios";
+
+import SavedRecipes from "./SavedRecipes";
 
 export default function App() {
 
   const [loggedInUser, setLoggedInUser] = React.useState(null);
   const [Token, setToken] = React.useState(null);
-  console.log(loggedInUser);
-
 
   const handleLogout = () => {
-    axios.post('http://localhost:8080/logout',{});
-    setLoggedInUser(null);
-      
-            
+    setLoggedInUser(null);      
       
   };
   return (
@@ -42,7 +38,10 @@ export default function App() {
           {loggedInUser && (
             <>
               <li>
-                <Link to="/recipe">FindRecipe</Link>
+                <Link to="/recipe">Find Recipe</Link>
+              </li>
+              <li>
+                <Link to="/saved">Saved Recipe</Link>
               </li>
               <li>
                 <button onClick={handleLogout}>Logout</button>
@@ -52,7 +51,7 @@ export default function App() {
         </ul>
       </nav>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home loggedInUser={loggedInUser}/>} />
         {!loggedInUser && (
           <>
             <Route path="login" element={<Login setLoggedInUser={setLoggedInUser} setToken={setToken} Token={Token}/>} />
@@ -61,9 +60,9 @@ export default function App() {
         )}
         {loggedInUser && (
           <>
-            <Route path="recipe" element={<RecipeSearch Token={Token}/>} />
+            <Route path="recipe" element={<RecipeSearch Token={Token} loggedInUser={loggedInUser}/>} />
+            <Route path="saved" element={<SavedRecipes Token={Token} loggedInUser={loggedInUser}  />} />
             <Route path="logout" element={<LogOut handleLogout={handleLogout} />} />
-            <Route path="home" element={<Home loggedInUser={loggedInUser} />} />
           </>
         )}
         <Route path="*" element={<NoMatch />} />
@@ -72,13 +71,6 @@ export default function App() {
   );
 }
 
-function Layout() {
-  return (
-    <div>
-      <Outlet />
-    </div>
-  );
-}
 
 
 function NoMatch() {
