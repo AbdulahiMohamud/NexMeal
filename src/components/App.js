@@ -13,6 +13,7 @@ export default function App() {
 
   const [loggedInUser, setLoggedInUser] = React.useState(null);
   const [Token, setToken] = React.useState(null);
+  const server = process.env.SPRING_SERVER;
 
   const handleLogout = () => {
     setLoggedInUser(null);      
@@ -54,7 +55,7 @@ export default function App() {
         <Route path="/" element={<Home loggedInUser={loggedInUser}/>} />
         {!loggedInUser && (
           <>
-            <Route path="login" element={<Login setLoggedInUser={setLoggedInUser} setToken={setToken} Token={Token}/>} />
+            <Route path="login" element={<Login setLoggedInUser={setLoggedInUser} setToken={setToken} Token={Token} server={server}/>} />
             <Route path="signup" element={<SignupForm setLoggedInUser={setLoggedInUser} setToken={setToken} />} />
           </>
         )}

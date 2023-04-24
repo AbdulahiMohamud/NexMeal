@@ -13,7 +13,7 @@ export default function SavedRecipes({Token , loggedInUser}) {
 
 
     async function getSavedRecipesfromDB(){
-       const response =  await axios.get(`http://localhost:8080/recipe/saved/${loggedInUser.id}`
+       const response =  await axios.get(`${process.env.REACT_APP_SPRING_SERVER}/recipe/saved/${loggedInUser.id}`
        , {
         headers: {
          Authorization: `Bearer ${Token}`,
@@ -21,7 +21,7 @@ export default function SavedRecipes({Token , loggedInUser}) {
        setSavedRecipes(response.data)
     }
     async function deleteSavedRecipesfromDB(recipeID){
-        await axios.delete(`http://localhost:8080/users/${loggedInUser.id}/recipes/${recipeID}`
+        await axios.delete(`${process.env.REACT_APP_SPRING_SERVER}/users/${loggedInUser.id}/recipes/${recipeID}`
         , {
          headers: {
           Authorization: `Bearer ${Token}`,
@@ -73,7 +73,7 @@ export default function SavedRecipes({Token , loggedInUser}) {
               <div>
                 
                 <h2 className="modal__title">{selectedRecipe.title}</h2>
-                <p onClick={()=>handleDeleteSavedRecipe(selectedRecipe.id)}>Delete</p>
+                <p onClick={()=>handleDeleteSavedRecipe(selectedRecipe.id)} className="delete_recipe">❌</p>
 
                 <img src={selectedRecipe.recipes.image} alt={selectedRecipe.recipes.title} className="modal__image" />
                 <p className="modal__time">Ready in {selectedRecipe.recipes.readyInMinutes} minutes</p>
