@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 1rem;
   max-width: 800px;
+  background-color:#F5DEB3; /* warm color */
 }
 
 /* Header */
@@ -19,6 +20,7 @@ header {
 nav ul {
   display: flex;
   list-style: none;
+  margin-left: 1rem; /* add left margin for spacing */
 }
 
 nav ul li {
@@ -128,4 +130,3 @@ hr {
   max-width: 800px;
   margin: 0 auto;
 }
-

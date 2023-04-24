@@ -6,7 +6,7 @@ export default function LogOut() {
     let navigate = useNavigate();
 
     const handleLogout = () => {
-        axios.post('http://localhost:8080/logout')
+        axios.post(`${process.env.REACT_APP_SPRING_SERVER}/logout`)
         .then( () => {
             navigate('login');
         });

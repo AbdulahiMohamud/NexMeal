@@ -1,0 +1,9 @@
+
+.homediv {
+    background-image: url("../images/NexMeal_Log.png");
+  }
+h1{
+    font-size: larger;
+    font-style: italic;
+    color: orange;
+}

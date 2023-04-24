@@ -5,39 +5,47 @@ import axios from 'axios';
 
 import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/Login.css';
 
-export default function Login({ setLoggedInUser, setToken, Token }) {
+export default function Login({ setLoggedInUser, setToken, Token, server }) {
 
   let navigate = useNavigate();
   const [email,setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  
+
+  
+  
  
   
 
   const handleLogin = (event) => {
     event.preventDefault();
 
-    axios.post('http://localhost:8080/api/authenticate', {
+    axios.post(`${process.env.REACT_APP_SPRING_SERVER}/api/authenticate`, {
   
       email:email,
       password: password
     })
     .then(response => {
+      
       const user = response.data;
       setToken(user[0].token)
       setLoggedInUser(user[1]);
       navigate("/")
+
+    
     })
     .catch(error => {
       console.log(error.response);
       setErrorMessage('Invalid username or password');
+      
     });
   };
 
   return (
     <div>
       
-      <h1>Login</h1>
+      <h1>Login </h1>
       <form onSubmit={handleLogin}>
         <div>
           <label>Email:</label>

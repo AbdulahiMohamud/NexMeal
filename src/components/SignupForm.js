@@ -19,7 +19,7 @@ export default function SignupForm({setLoggedInUser}) {
         
 
         // Send POST request to Spring Boot API
-        fetch('http://localhost:8080/api/signup', {
+        fetch(`${process.env.REACT_APP_SPRING_SERVER}/api/signup`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userName, firstName, lastName, email, password })

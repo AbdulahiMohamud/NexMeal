@@ -20,7 +20,7 @@ export default function RecipeSearch({Token , loggedInUser}) {
   async function fetchRecipes() {
     // add token for authentication
     // url is to the backend
-    const url = `http://localhost:8080/recipes/search?query=${query}&excludeIngredients=${excludeIngredients}`;
+    const url = `${process.env.REACT_APP_SPRING_SERVER}/recipes/search?query=${query}&excludeIngredients=${excludeIngredients}`;
     const response = await axios.get(url, {
      headers: {
       Authorization: `Bearer ${Token}`,
@@ -32,7 +32,7 @@ export default function RecipeSearch({Token , loggedInUser}) {
   async function saveRecipes(recipe) {
     // add token for authentication
     // url is to the backend
-    const url = `http://localhost:8080/users/${loggedInUser.id}/recipes`;
+    const url = `${process.env.REACT_APP_SPRING_SERVER}/users/${loggedInUser.id}/recipes`;
     await axios.post(
       url,
       recipe,
