@@ -110,9 +110,9 @@ export default function RecipeSearch({Token , loggedInUser}) {
           <div>
             <h2 className="modal__title">{selectedRecipe.title}</h2>
             {!isSaved ? 
-            (<p onClick={() => handleSaveRecipeClick(selectedRecipe)}>❤️</p>)
+            (<p onClick={() => handleSaveRecipeClick(selectedRecipe)} className="heart">❤️</p>)
             :
-          (<p>Added to Saves</p>)}
+          (<p className="AddedtoSaves">Added to Saves</p>)}
             
             <img src={selectedRecipe.image} alt={selectedRecipe.title} className="modal__image" />
             <p className="modal__time">Ready in {selectedRecipe.readyInMinutes} minutes</p>

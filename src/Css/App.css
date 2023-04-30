@@ -1,82 +1,14 @@
-/* App container */
-.App {
-  margin: 0 auto;
-  padding: 1rem;
-  max-width: 800px;
-  background-color:#F5DEB3; /* warm color */
-}
-
-/* Header */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  background-color: #333;
-  color: white;
-}
-
-/* Navigation links */
-nav ul {
-  display: flex;
-  list-style: none;
-  margin-left: 1rem; /* add left margin for spacing */
-}
-
-nav ul li {
-  margin-right: 1rem;
-}
-
-/* Form */
-form {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem 0;
-}
-
-label {
-  margin-bottom: 0.5rem;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 0.25rem;
-  margin-bottom: 1rem;
-}
-
-button[type="submit"] {
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  background-color: #333;
-  color: white;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #555;
-}
-
-/* Error message */
-.error {
-  color: red;
-  margin-bottom: 1rem;
-}
 /* Global styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #F5DEB3; /* warm color */
 }
 
 /* Layout styles */
 nav {
-  background-color: #eee;
+  background-color: #FFA07A; /* coral color */
   padding: 10px;
   margin-bottom: 20px;
 }
@@ -97,12 +29,12 @@ nav li:last-child {
 }
 
 nav a {
-  color: #333;
+  color: white;
   text-decoration: none;
 }
 
 nav a:hover {
-  color: #666;
+  color: #F5DEB3; /* warm color */
 }
 
 hr {
@@ -129,4 +61,179 @@ hr {
 .recipe-search {
   max-width: 800px;
   margin: 0 auto;
+}
+
+/* Custom styles for the project */
+.homediv {
+  background-color: #FFA07A; /* coral color */
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.homediv h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.homediv p {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: 2rem;
+}
+
+.error {
+  color: red;
+  margin-bottom: 1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+button[type="submit"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #FFA07A; /* coral color */
+  color: white;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #F5DEB3; /* warm color */
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
+/* Add styles for the recipe cards, etc. here */
+.recipe {
+  color: #FFA07A;
+  display: flex;
+  flex-direction: column;
+  align-items:baseline;
+  margin-bottom: 50px;
+  height: 600px; /* set height */
+  overflow-y: auto; /* add scroll to the summary */
+}
+
+.recipe__title {
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.recipe__image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.recipe__time {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.recipe__summary {
+
+  font-size: 15px;
+  color: black;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 20px;
+  text-align: justify;
+  overflow-y: scroll;
+  line-height: 1.5;
+}
+
+.recipe__button {
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color:#FFA07A;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.recipe__button:hover {
+  background-color: red;
+}
+
+.modal__title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.modal__image {
+  width: auto;
+  max-width: 600px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.modal__time {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.modal__instruction-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.modal {
+
+  color: #FFA07A;
+  background-color: #FFA07A;
+  overflow-y: auto;
+}
+
+.modal__instruction-list {
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.modal__instruction-step {
+  margin-bottom: 10px;
+}
+.heart:hover {
+  animation: bounce 0.5s infinite;
+  cursor: pointer;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.AddedtoSaves{
+  color: gray;
+}
+
+.delete_recipe:hover{
+  cursor: pointer;
+  transform: scale(1.2);
+  background-color: #ff0000;
+  color: #ffffff;
+  transition: all 0.3s ease;
+
+
 }
