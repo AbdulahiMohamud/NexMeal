@@ -43,24 +43,38 @@ export default function Login({ setLoggedInUser, setToken, Token, server }) {
   };
 
   return (
-    <div>
-      
-      <h1>Login </h1>
+    <div className="form-container">
+      <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <div>
-          <label>Email:</label>
-          <input type="text" value={email} onChange={(event) => setEmail(event.target.value)} />
+          <label htmlFor="email">Email:</label>
+          <input
+            type="text"
+            id="email"
+            className="input-field"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
         </div>
         <div>
-          <label>Password:</label>
-          <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            className="input-field"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
         </div>
         <div>
-          <button type="submit">Login</button>
+          <button type="submit" className="login-button">
+            Login
+          </button>
         </div>
-        {errorMessage && <p>{errorMessage}</p>}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </form>
     </div>
   );
+  
 }
 

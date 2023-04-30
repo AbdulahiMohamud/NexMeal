@@ -8,15 +8,14 @@ export default function Home({loggedInUser}){
 
 
 
-    return (
-        <div className="homediv">
-      <h1>Welcome to NexMeal !</h1>
+  return (
+    <div className="homepage">
+      <h1 className="homepage-title">Welcome to NexMeal!</h1>
       {!loggedInUser ? 
-      (<p>Please signup or login to access are recipe search to find your next meal to make.</p>)
-      :
-      (<p>happy to see you again {loggedInUser.firstName}</p>)
+        <p className="homepage-subtitle">Please sign up or log in to access our recipe search and find your next meal to make.</p>
+        :
+        <p className="homepage-subtitle">Happy to see you again, {loggedInUser.firstName}!</p>
       }
     </div>
-
-    )
+  );
 }

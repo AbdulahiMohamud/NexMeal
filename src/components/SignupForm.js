@@ -63,36 +63,36 @@ export default function SignupForm({setLoggedInUser}) {
 
     return (
         <>
-            <h1>Signup</h1>
-            {error && <div className="error">{error}</div>}
+          <div className="signup-container">
+            <h1>Sign Up</h1>
+            {error && <div className="error-message">{error}</div>}
             <form onSubmit={handleSubmit}>
-                <label>
-                    UserName:
-                    <input type="text" value={userName} onChange={event => setUserName(event.target.value)} />
-                </label>
-                <br />
-                <label>
-                    FirstName:
-                    <input type="text" value={firstName} onChange={event => setFirstName(event.target.value)} />
-                </label>
-                <br />
-                <label>
-                    LastName:
-                    <input type="text" value={lastName} onChange={event => setLastName(event.target.value)} />
-                </label>
-                <br />
-                <label>
-                    Email:
-                    <input type="email" value={email} onChange={event => setEmail(event.target.value)} />
-                </label>
-                <br />
-                <label>
-                    Password:
-                    <input type="password" value={password} onChange={event => setPassword(event.target.value)} />
-                </label>
-                <br />
+              <div className="form-group">
+                <label htmlFor="userName">Username:</label>
+                <input type="text" id="userName" value={userName} onChange={event => setUserName(event.target.value)} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="firstName">First Name:</label>
+                <input type="text" id="firstName" value={firstName} onChange={event => setFirstName(event.target.value)} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="lastName">Last Name:</label>
+                <input type="text" id="lastName" value={lastName} onChange={event => setLastName(event.target.value)} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email:</label>
+                <input type="email" id="email" value={email} onChange={event => setEmail(event.target.value)} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password:</label>
+                <input type="password" id="password" value={password} onChange={event => setPassword(event.target.value)} />
+              </div>
+              <div className="form-group">
                 <button type="submit">Sign Up</button>
+              </div>
             </form>
+          </div>
         </>
-    );
+      );
+      
 }

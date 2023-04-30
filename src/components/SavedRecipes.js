@@ -73,7 +73,7 @@ export default function SavedRecipes({Token , loggedInUser}) {
               <div>
                 
                 <h2 className="modal__title">{selectedRecipe.title}</h2>
-                <p onClick={()=>handleDeleteSavedRecipe(selectedRecipe.id)} className="delete_recipe">❌</p>
+                <p onClick={()=>handleDeleteSavedRecipe(selectedRecipe.id)} className="delete_recipe">DELETE ❌</p>
 
                 <img src={selectedRecipe.recipes.image} alt={selectedRecipe.recipes.title} className="modal__image" />
                 <p className="modal__time">Ready in {selectedRecipe.recipes.readyInMinutes} minutes</p>
