@@ -31,7 +31,7 @@ export default function Login({ setLoggedInUser, setToken, Token, server }) {
       const user = response.data;
       setToken(user[0].token)
       setLoggedInUser(user[1]);
-      navigate("/")
+      navigate("/home")
 
     
     })

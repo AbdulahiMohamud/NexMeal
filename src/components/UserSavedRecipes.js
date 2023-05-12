@@ -5,7 +5,7 @@ import parse from 'html-react-parser';
 
 
 
-export default function SavedRecipes({Token , loggedInUser}) {
+export default function UserSavedRecipes({Token , ClickedUser}) {
     const [savedRecipes, setSavedRecipes] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -13,7 +13,7 @@ export default function SavedRecipes({Token , loggedInUser}) {
 
 
     async function getSavedRecipesfromDB(){
-       const response =  await axios.get(`${process.env.REACT_APP_SPRING_SERVER}/recipe/saved/${loggedInUser.id}`
+       const response =  await axios.get(`${process.env.REACT_APP_SPRING_SERVER}/recipe/saved/${ClickedUser.id}`
        , {
         headers: {
          Authorization: `Bearer ${Token}`,
@@ -21,7 +21,7 @@ export default function SavedRecipes({Token , loggedInUser}) {
        setSavedRecipes(response.data)
     }
     async function deleteSavedRecipesfromDB(recipeID){
-        await axios.delete(`${process.env.REACT_APP_SPRING_SERVER}/users/${loggedInUser.id}/recipes/${recipeID}`
+        await axios.delete(`${process.env.REACT_APP_SPRING_SERVER}/users/${ClickedUser.id}/recipes/${recipeID}`
         , {
          headers: {
           Authorization: `Bearer ${Token}`,
@@ -53,22 +53,25 @@ export default function SavedRecipes({Token , loggedInUser}) {
       }
 
     return (
+        <>
 
-      
+
+
+        
    
         <div className="RecipeSearch">
-          {savedRecipes.length > 1 ? (
-  <ul className="recipes">
-    {savedRecipes.map((recipe) => (
-      <li key={recipe.recipes.id} className="recipe">
-        <h2 className="recipe__title">{recipe.recipes.title}</h2>
-        <img src={recipe.recipes.image} alt={recipe.recipes.title} className="recipe__image" />
-        <p className="recipe__time">Ready in {recipe.recipes.readyInMinutes} minutes</p>
-        <p className="recipe__summary">{parse(recipe.recipes.summary)}</p>
-        <button onClick={() => handleRecipeClick(recipe)} className="recipe__button">See the recipe</button>
-      </li>
-    ))}
-  </ul>
+        {savedRecipes.length > 1 ? (
+            <><h1 className="homepage-title">{ClickedUser.firstName}'s saved recipes!</h1><ul className="recipes">
+                        {savedRecipes.map((recipe) => (
+                            <li key={recipe.recipes.id} className="recipe">
+                                <h2 className="recipe__title">{recipe.recipes.title}</h2>
+                                <img src={recipe.recipes.image} alt={recipe.recipes.title} className="recipe__image" />
+                                <p className="recipe__time">Ready in {recipe.recipes.readyInMinutes} minutes</p>
+                                <p className="recipe__summary">{parse(recipe.recipes.summary)}</p>
+                                <button onClick={() => handleRecipeClick(recipe)} className="recipe__button">See the recipe</button>
+                            </li>
+                        ))}
+                    </ul></>
 ) : (
   <h1 className="homepage-title">No saved recipes</h1>
 )}
@@ -94,5 +97,6 @@ export default function SavedRecipes({Token , loggedInUser}) {
             )}
           </Modal>
         </div>
+        </>
       );
 }
