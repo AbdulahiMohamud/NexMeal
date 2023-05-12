@@ -48,7 +48,13 @@ hr {
   text-align: center;
 }
 
+.form-container{
+  margin: auto;
+}
+
 .login-form {
+  
+  justify-items: center;
   max-width: 400px;
   margin: 0 auto;
 }
@@ -235,5 +241,103 @@ label {
   color: #ffffff;
   transition: all 0.3s ease;
 
+}
+.user-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
 
+.profile-image-container {
+  margin-right: 10px;
+}
+
+.profile-image-container img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.user-info-container {
+  flex-grow: 1;
+}
+
+.user-info-container h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.user-info-container p {
+  margin: 0;
+  color: #666;
+}
+
+.user-info-container button {
+  background-color: #3897f0;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.recipes-container {
+  overflow: hidden;
+}
+
+
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+}
+
+.carousel-slide {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.car_recipe__title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.car_recipe__image {
+  width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
+
+.recipe__time {
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+.car_recipe__summary {
+  font-size: 0.9rem;
+  line-height: 1.2;
+  height: 3.6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.carousel__button {
+  /* Style your button here */
 }

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useState } from "react";
 import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/App.css';
 import { Routes, Route, Link } from "react-router-dom";
 import Login from "./Login";
@@ -6,13 +6,16 @@ import RecipeSearch from "./RecipeSearch";
 import SignupForm from "./SignupForm";
 import Home from "./Home";
 import LogOut from "./LogOut";
+import UserSavedRecipes from "./UserSavedRecipes";
+
 
 import SavedRecipes from "./SavedRecipes";
 
 export default function App() {
 
-  const [loggedInUser, setLoggedInUser] = React.useState(null);
-  const [Token, setToken] = React.useState(null);
+  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [Token, setToken] = useState(null);
+  const [ClickedUser , setClickedUser] = useState([]);
   const server = process.env.SPRING_SERVER;
 
   const handleLogout = () => {
@@ -24,7 +27,7 @@ export default function App() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/home">Home</Link>
           </li>
           {!loggedInUser && (
             <>
@@ -52,7 +55,7 @@ export default function App() {
         </ul>
       </nav>
       <Routes>
-        <Route path="/" element={<Home loggedInUser={loggedInUser}/>} />
+        <Route path="/home" element={<Home loggedInUser={loggedInUser} Token={Token} setClickedUser ={setClickedUser}/>} />
         {!loggedInUser && (
           <>
             <Route path="login" element={<Login setLoggedInUser={setLoggedInUser} setToken={setToken} Token={Token} server={server}/>} />
@@ -64,6 +67,7 @@ export default function App() {
             <Route path="recipe" element={<RecipeSearch Token={Token} loggedInUser={loggedInUser}/>} />
             <Route path="saved" element={<SavedRecipes Token={Token} loggedInUser={loggedInUser}  />} />
             <Route path="logout" element={<LogOut handleLogout={handleLogout} />} />
+            <Route path="/usersRecipes/:id" element={<UserSavedRecipes Token={Token} ClickedUser={ClickedUser} />} />
           </>
         )}
         <Route path="*" element={<NoMatch />} />
@@ -79,7 +83,7 @@ function NoMatch() {
     <div>
       <h2>Nothing to see here!</h2>
       <p>
-        <Link to="/">Go to the home page</Link>
+        <Link to="/home">Go to the home page</Link>
       </p>
     </div>
   );
