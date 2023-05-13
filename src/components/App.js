@@ -8,6 +8,8 @@ import Home from "./Home";
 import LogOut from "./LogOut";
 import UserSavedRecipes from "./UserSavedRecipes";
 import head_shot from "../images/head_shot.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 
 
@@ -100,16 +102,29 @@ function AboutMe() {
 
 
   return(
+    <body className="about-me-body">
       <div className="about-me">
-    <div className="about-me-image-container">
-      <img src={head_shot} alt="Me" className="about-me-image" />
+      <div className="about-me-image-container">
+        <img src={head_shot} alt="Me" className="about-me-image" />
+      </div>
+      <div className="about-me-text">
+        <h1>Hi, I'm Abdulahi Mohamud</h1>
+        <p> I am a fullstack software developer with experience in Java, JavaScript, HTML, CSS, and RESTful APIs. My expertise lies in building scalable applications using SpringMVC. I enjoy Creating full stack website with API's I find intresting!.</p>
+        <div className="social-links">
+        <p>Connect with me on linkedin <a href="https://www.linkedin.com/in/abdulahimmohamud/" target="_blank" rel="noopener noreferrer" style={{fontSize: '2rem'}}>
+          
+          <FontAwesomeIcon icon={faLinkedin} />
+        </a></p>
+
+        <p>See the Code on my github <a href="https://github.com/AbdulahiMohamud" target="_blank" rel="noopener noreferrer" style={{fontSize: '2rem'}}> 
+  <FontAwesomeIcon icon={faGithub} />
+</a></p>
+
+
+        </div>
+      </div>
     </div>
-    <div className="about-me-text">
-      <h1>Hi, I'm Abdulahi Mohamud</h1>
-      <p> I am a fullstack software developer with experience in Java, JavaScript, HTML, CSS, and RESTful APIs. My expertise lies in building scalable applications using SpringMVC. I enjoy Creating full stack website with API's I find intresting!.</p>
-      <p>Feel free to connect with me on <a href="https://www.linkedin.com/in/abdulahimmohamud/">LinkedIn</a> or check out my code on <a href="https://github.com/AbdulahiMohamud">GitHub</a>.</p>
-    </div>
-  </div>
+  </body>
 
   );
 }

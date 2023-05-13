@@ -312,23 +312,42 @@ label {
 .about-me-text {
   text-align: left;
   font-size: 18px;
+  
 }
 
 .about-me-text h1 {
   margin-bottom: 20px;
+  color: rgba(255, 215, 0, 1);
 }
 
 .about-me-text p {
   margin-bottom: 10px;
+  color: rgba(192, 192, 192, 1);
 }
 
 .about-me-text a {
-  color: #3897f0;
+  color: rgba(192, 192, 192, 1);
   text-decoration: none;
 }
 
 .about-me-text a:hover {
   text-decoration: underline;
 }
+.about-me-body{
+  position: absolute; 
+    top: 37px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background: url('https://media.giphy.com/media/4H3Ii5eLChYul9p7NL/giphy.gif');
+  background-repeat: no-repeat;
+    background-size: 150%;
+    background-position: center center;
+    
+  
+}
+
+
 
 
