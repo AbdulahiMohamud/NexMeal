@@ -5,10 +5,12 @@ import parse from 'html-react-parser';
 
 
 
-export default function UserSavedRecipes({Token , ClickedUser}) {
+export default function UserSavedRecipes({Token , ClickedUser , loggedInUser}) {
     const [savedRecipes, setSavedRecipes] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedRecipe, setSelectedRecipe] = useState(null);
+    const [isSaved, setIsSaved] = useState(false);
+
 
 
 
@@ -20,29 +22,34 @@ export default function UserSavedRecipes({Token , ClickedUser}) {
        },});
        setSavedRecipes(response.data)
     }
-    async function deleteSavedRecipesfromDB(recipeID){
-        await axios.delete(`${process.env.REACT_APP_SPRING_SERVER}/users/${ClickedUser.id}/recipes/${recipeID}`
-        , {
+    async function saveRecipes(recipe) {
+        // add token for authentication
+        // url is to the backend
+        const url = `${process.env.REACT_APP_SPRING_SERVER}/users/${loggedInUser.id}/recipes`;
+        await axios.post(
+          url,
+          recipe,
+           {
          headers: {
           Authorization: `Bearer ${Token}`,
         },});
-
-        await getSavedRecipesfromDB();
+        setIsSaved(true);
         
-     }
+        
+      }
 
     useEffect(() => {
         getSavedRecipesfromDB();
       },);
 
     async function handleRecipeClick(recipe) {
+        console.log(recipe);
         setSelectedRecipe(recipe);
         setModalIsOpen(true);
       }
 
-      async function handleDeleteSavedRecipe(recipeID){
-        await deleteSavedRecipesfromDB(recipeID);
-        setModalIsOpen(false);
+      function handleSaveRecipeClick(recipe) {
+        saveRecipes(recipe);
         
       }
       
@@ -50,6 +57,7 @@ export default function UserSavedRecipes({Token , ClickedUser}) {
       function handleCloseDetail() {
         setSelectedRecipe(null);
         setModalIsOpen(false);
+        setIsSaved(false);
       }
 
     return (
@@ -81,7 +89,10 @@ export default function UserSavedRecipes({Token , ClickedUser}) {
               <div>
                 
                 <h2 className="modal__title">{selectedRecipe.title}</h2>
-                <p onClick={()=>handleDeleteSavedRecipe(selectedRecipe.id)} className="delete_recipe">DELETE ❌</p>
+                {!isSaved ? 
+            (<p onClick={() => handleSaveRecipeClick(selectedRecipe.recipes)} className="heart">❤️</p>)
+            :
+          (<p className="AddedtoSaves">Added to Saves</p>)}
 
                 <img src={selectedRecipe.recipes.image} alt={selectedRecipe.recipes.title} className="modal__image" />
                 <p className="modal__time">Ready in {selectedRecipe.recipes.readyInMinutes} minutes</p>

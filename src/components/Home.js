@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/Home.css';
 import NexMeal_Log from '../images/NexMeal_Log.png';
 
-export default function Home({loggedInUser , Token , setClickedUser }){
+export default function Home({loggedInUser , setClickedUser }){
 
   const [otherUsers,setOtherUsers] = useState([]);
 
@@ -28,10 +28,13 @@ export default function Home({loggedInUser , Token , setClickedUser }){
     <div className="homepage">
       <h1 className="homepage-title">Welcome to NexMeal!</h1>
       {!loggedInUser ? 
-        <p className="homepage-subtitle">Please sign up or log in to access our recipe search and find your next meal to make.</p>
+        <p className="homepage-subtitle">Please <Link to= "/signup">sign up</Link> or <Link to = "/login">Log in</Link> to access our recipe search and find your next meal to make.</p>
         :
         <>
         <p className="homepage-subtitle">Happy to see you again, {loggedInUser.firstName}!</p>
+        <p>Here are all the users on this app! </p>
+        <p>Click on their names to see what they're plan on cooking next! </p>
+
         {otherUsers && (
 
           <ul className="feed">
