@@ -70,12 +70,7 @@ hr {
 }
 
 /* Custom styles for the project */
-.homediv {
-  background-color: #FFA07A; /* coral color */
-  color: white;
-  padding: 2rem;
-  text-align: center;
-}
+
 
 .homediv h1 {
   font-size: 3rem;
@@ -242,12 +237,16 @@ label {
   transition: all 0.3s ease;
 
 }
+
+/* users */
+
 .user-container {
   display: flex;
   align-items: center;
-  border: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 10px;
+  width: 100%;
 }
 
 .profile-image-container {
@@ -283,61 +282,72 @@ label {
   font-weight: bold;
   cursor: pointer;
 }
+
 .recipes-container {
   overflow: hidden;
 }
 
 
-.carousel-container {
+/* about me  */
+
+
+.about-me {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-}
-
-.carousel {
-  display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  max-width: 800px;
+  padding: 50px;
 }
 
-.carousel-slide {
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
+.about-me-image-container {
+  margin-right: 50px;
 }
 
-.car_recipe__title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin: 10px 0;
+.about-me-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
 }
 
-.car_recipe__image {
-  width: 100%;
-  height: auto;
-  margin: 10px 0;
+.about-me-text {
+  text-align: left;
+  font-size: 18px;
+  
 }
 
-.recipe__time {
-  font-size: 0.8rem;
+.about-me-text h1 {
+  margin-bottom: 20px;
+  color: rgba(255, 215, 0, 1);
+}
+
+.about-me-text p {
   margin-bottom: 10px;
+  color: rgba(192, 192, 192, 1);
 }
 
-.car_recipe__summary {
-  font-size: 0.9rem;
-  line-height: 1.2;
-  height: 3.6em;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.about-me-text a {
+  color: rgba(192, 192, 192, 1);
+  text-decoration: none;
 }
 
-.carousel__button {
-  /* Style your button here */
+.about-me-text a:hover {
+  text-decoration: underline;
 }
+.about-me-body{
+  position: absolute; 
+    top: 37px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background: url('https://media.giphy.com/media/4H3Ii5eLChYul9p7NL/giphy.gif');
+  background-repeat: no-repeat;
+    background-size: 150%;
+    background-position: center center;
+    
+  
+}
+
+
+
+
