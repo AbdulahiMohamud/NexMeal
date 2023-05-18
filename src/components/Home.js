@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Card, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/Home.css';
 import NexMeal_Log from '../images/NexMeal_Log.png';
+import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/Home.css';
 
-export default function Home({loggedInUser , setClickedUser }){
-
-  const [otherUsers,setOtherUsers] = useState([]);
+export default function Home({ loggedInUser, setClickedUser }) {
+  const [otherUsers, setOtherUsers] = useState([]);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_SPRING_SERVER}/api/feed`)
@@ -18,50 +18,48 @@ export default function Home({loggedInUser , setClickedUser }){
       });
   }, []);
 
-  const handleClickedUser =  (user) => {
-    setClickedUser(user)
+  const handleClickedUser = (user) => {
+    setClickedUser(user);
     console.log(user);
-
-  }
+  };
 
   return (
     <div className="homepage">
       <h1 className="homepage-title">Welcome to NexMeal!</h1>
-      {!loggedInUser ? 
-        <p className="homepage-subtitle">Please <Link to= "/signup">sign up</Link> or <Link to = "/login">Log in</Link> to access our recipe search and find your next meal to make.</p>
-        :
+      {!loggedInUser ? (
+        <p className="homepage-subtitle">
+          Please <Link to="/signup">sign up</Link> or <Link to="/login">Log in</Link> to access our recipe search and find your next meal to make.
+        </p>
+      ) : (
         <>
-        <p className="homepage-subtitle">Happy to see you again, {loggedInUser.firstName}!</p>
-        <p>Here are all the users on this app! </p>
-        <p>Click on their names to see what they're plan on cooking next! </p>
+          <p className="homepage-subtitle">Happy to see you again, {loggedInUser.firstName}!</p>
+          <p className="homepage-subtitle">Here are all the users on this app!  </p>
+          <p className="homepage-subtitle">Click on their names to see what they're planning on cooking next! </p>
 
-        {otherUsers && (
-
-          <ul className="feed">
-
-          {otherUsers.filter((user) => user.id !== loggedInUser.id).map((user) => (
-            <li key={user.id} className="user-container">
-
-              <div className="profile-image-container">
-                <img src={NexMeal_Log} alt={user.firstName} />
-              </div>
-
-              <div className="user-info-container">
-                <Link to={`/usersRecipes/${user.id}`}>
-                  <h2 onClick={() => handleClickedUser(user)}>{user.firstName}</h2>
-                </Link>
-                <p>following {user.following.length}</p>
-                <button>Follow</button>
-              </div>
-
-            </li>
-
-          ))}
-
-        </ul>
-        )}        
+          <div className="user-card-container">
+            {otherUsers && (
+              <>
+                {otherUsers
+                  .filter((user) => user.id !== loggedInUser.id)
+                  .map((user) => (
+                    <Card key={user.id} className="user-card">
+                      <div className="profile-image-container">
+                        <Card.Img variant="top" src={NexMeal_Log} alt={user.firstName} />
+                      </div>
+                      <Card.Body>
+                        <Link to={`/usersRecipes/${user.id}`}>
+                          <Card.Title onClick={() => handleClickedUser(user)}>{user.firstName}</Card.Title>
+                        </Link>
+                        <Card.Text>Recipes {user.savedRecipes.length}</Card.Text>
+                        <Button variant="primary">Follow</Button>
+                      </Card.Body>
+                    </Card>
+                  ))}
+              </>
+            )}
+          </div>
         </>
-      }
+      )}
     </div>
   );
 }

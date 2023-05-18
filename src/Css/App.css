@@ -6,6 +6,7 @@ body {
   background-color: #F5DEB3; /* warm color */
 }
 
+
 /* Layout styles */
 nav {
   background-color: #FFA07A; /* coral color */
@@ -35,7 +36,7 @@ nav a {
 
 nav a:hover {
   color: #F5DEB3; /* warm color */
-}
+}  
 
 hr {
   border: none;
@@ -292,11 +293,16 @@ label {
 
 
 .about-me {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 50px;
+  position: absolute; 
+    top: 50px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background: url('https://media.giphy.com/media/4H3Ii5eLChYul9p7NL/giphy.gif');
+  background-repeat: no-repeat;
+    background-size: 150%;
+    background-position: center center;
 }
 
 .about-me-image-container {
@@ -321,7 +327,7 @@ label {
 }
 
 .about-me-text p {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: rgba(192, 192, 192, 1);
 }
 
@@ -332,20 +338,6 @@ label {
 
 .about-me-text a:hover {
   text-decoration: underline;
-}
-.about-me-body{
-  position: absolute; 
-    top: 37px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    background: url('https://media.giphy.com/media/4H3Ii5eLChYul9p7NL/giphy.gif');
-  background-repeat: no-repeat;
-    background-size: 150%;
-    background-position: center center;
-    
-  
 }
 
 

@@ -33,19 +33,6 @@ export default function App() {
           <li>
             <Link to="/home">Home</Link>
           </li>
-          <li>
-            <Link to="/aboutme">About me</Link>
-          </li>
-          {!loggedInUser && (
-            <>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/signup">Signup</Link>
-              </li>
-            </>
-          )}
           {loggedInUser && (
             <>
               <li>
@@ -59,6 +46,19 @@ export default function App() {
               </li>
             </>
           )}
+          {!loggedInUser && (
+            <>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/signup">Signup</Link>
+              </li>
+            </>
+          )}
+          <li>
+            <Link to="/aboutme">About me</Link>
+          </li>
         </ul>
       </nav>
       <Routes>
@@ -102,7 +102,7 @@ function AboutMe() {
 
 
   return(
-    <body className="about-me-body">
+    
       <div className="about-me">
       <div className="about-me-image-container">
         <img src={head_shot} alt="Me" className="about-me-image" />
@@ -124,7 +124,7 @@ function AboutMe() {
         </div>
       </div>
     </div>
-  </body>
+ 
 
   );
 }
