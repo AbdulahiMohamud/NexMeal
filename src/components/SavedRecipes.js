@@ -57,7 +57,7 @@ export default function SavedRecipes({Token , loggedInUser}) {
       
    
         <div className="RecipeSearch">
-          {savedRecipes.length > 1 ? (
+          {savedRecipes.length > 0 ? (
   <ul className="recipes">
     {savedRecipes.map((recipe) => (
       <li key={recipe.recipes.id} className="recipe">
