@@ -1,8 +1,7 @@
 .homepage {
   display: flex;
   align-items: center;
-  margin-top: 100px;
-  justify-content: center;
+  justify-content: start;
   flex-direction: column;
   height: 100vh;
   background-color: wheat;
@@ -95,9 +94,17 @@
   color: #333;
 }
 
-.user-card .follow-button {
+.follow-button {
   margin-top: 10px;
   width: 100%;
+  background-color: blue;
+}
+
+.following-button {
+  margin-top: 10px;
+  width: 100%;
+  background-color: grey;
+  cursor:default;
 }
 
 @keyframes slideIn {

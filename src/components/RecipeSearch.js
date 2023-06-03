@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import Modal from 'react-modal';
-import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/RecipeSearch.css';
+import '/Users/ballout/Desktop/NexMeal/NexMeal/src/Css/RecipeSearch.css';
 
 Modal.setAppElement('#root');
 

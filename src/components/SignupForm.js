@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
 
-import '/Users/abdulahimohamud/IdeaProjects/mayf-front/src/Css/SignupForm.css';
+import '/Users/ballout/Desktop/NexMeal/NexMeal/src/Css/SignupForm.css';
 
 
 export default function SignupForm({setLoggedInUser}) {
